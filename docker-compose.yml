@@ -105,6 +105,17 @@ services:
       - "8501:8501"
     volumes:
        - ./dashboard:/app/dashboard
-
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    depends_on:
+      - postgres
+    environment:
+      DB_HOST: postgres
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./api:/app/api
 volumes:
   pgdata:
