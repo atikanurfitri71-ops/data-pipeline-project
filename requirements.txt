@@ -1,0 +1,4 @@
+#library
+requests
+pandas
+psycopg2-binary

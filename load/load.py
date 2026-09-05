@@ -1,16 +1,16 @@
 import pandas as pd
 import psycopg2
 from psycopg2.extras import execute_values
+import os
 
 def get_connection():
     return psycopg2.connect(
-        host="localhost",
+        host=os.getenv("DB_HOST", "localhost"),
         port="5432",
         dbname="pipeline_db",
         user="dataeng",
         password="password123"
     )
-
 def create_table(conn):
     """Buat tabel kalau belum ada"""
     create_query = """
