@@ -12,7 +12,7 @@ with DAG(
     dag_id="crypto_etl_pipeline",
     default_args=default_args,
     description="ETL pipeline untuk data crypto dari CoinGecko",
-    schedule_interval="@hourly",  # jalan tiap 1 jam
+    schedule_interval="*/10 * * * *",  # jalan tiap 1 jam
     start_date=datetime(2026, 1, 1),
     catchup=False,
     tags=["etl", "crypto"],

@@ -6,3 +6,8 @@ requests
 pandas
 psycopg2-binary
 kafka-python
+requests
+pandas
+psycopg2-binary
+kafka-python
+scikit-learn

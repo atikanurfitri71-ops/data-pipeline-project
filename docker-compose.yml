@@ -93,5 +93,18 @@ services:
       - ./load:/opt/airflow/load
     command: scheduler
 
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile.streamlit
+    depends_on:
+      - postgres
+    environment:
+      DB_HOST: postgres
+    ports:
+      - "8501:8501"
+    volumes:
+       - ./dashboard:/app/dashboard
+
 volumes:
   pgdata:
