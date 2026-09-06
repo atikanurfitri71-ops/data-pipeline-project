@@ -28,10 +28,15 @@ with DAG(
         bash_command="cd /opt/airflow && python transform/transform.py",
     )
 
-    load_task = BashOperator(
+        load_task = BashOperator(
         task_id="load_data",
         bash_command="cd /opt/airflow && python load/load.py",
     )
 
-    # Urutan eksekusi: extract → transform → load
-    extract_task >> transform_task >> load_task
+    generate_ai_insight_task = BashOperator(
+        task_id="generate_ai_insight",
+        bash_command="cd /opt/airflow && python ai_feed/detect_and_generate.py",
+    )
+
+    # Urutan eksekusi: extract → transform → load → generate insight
+    extract_task >> transform_task >> load_task >> generate_ai_insight_task
